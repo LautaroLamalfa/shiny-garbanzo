@@ -1,6 +1,5 @@
 const express = require("express")
 const chatRoute = require("./routes/chat");
-const ptochatRoute = require("./routes/index");
 const produtosRoute = require("./routes/productos");
 
 
@@ -12,7 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use("/api/chat", chatRoute);
-app.use("/ptochat", ptochatRoute);
 app.use("/api/products", produtosRoute);
 
 
@@ -41,6 +39,6 @@ app.get("/", (req, res) => {
     res.send("Hola desde index.js")
 })
 
-server.listen(8081, () => {
+server.listen(3305, () => {
     console.log("Servidor 👍 por 8081");
 })

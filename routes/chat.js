@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
       res.send(aux);
     }
     catch(error){
-      throw Error("Error en todos los chats")
+      res.status(300).json("Error en todos los chats")
     }  
   }    
   getTodos();
@@ -28,11 +28,11 @@ router.post("/", (req, res) => {
   const fecha = new Date();
   let fechaOK = fecha.getDate() + '/' + (fecha.getMonth()+1) + ' - ' + fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()
   
-  let {name, msg } = req.body;
+  let {user, message } = req.body;
   let newObj = {
     date : fechaOK,
-    user: name,
-    message: msg,
+    user,
+    message,
   };
 
   async function saveChat(){
@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
       await chat.save(newObj);
       res.send({message:'chat agregado'});     
     } catch (error) {
-      throw Error("Error en post Chat");
+      res.status(300).json("Error en post Chat");
     }
   }
   saveChat();
@@ -57,7 +57,7 @@ router.delete("/:id", (req, res) => {
         res.send({message: "mensaje no encontrado"})
       } 
     } catch (error) {
-      throw(error);
+      res.status(300).json("error al borrar");
     }
   }
   deleteMsg();
