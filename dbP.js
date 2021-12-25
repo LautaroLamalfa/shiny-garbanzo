@@ -19,10 +19,12 @@ const knex = require("knex")({
     table.string("imagen");  
   })
   .then(() => {
-    console.log("Tabla Creada");
+    console.log("Tabla de Productos creada");
   })
   .catch((err) => {
     throw err;
   });
+
+  
 
 module.exports = knex;

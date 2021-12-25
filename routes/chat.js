@@ -28,10 +28,10 @@ router.post("/", (req, res) => {
   const fecha = new Date();
   let fechaOK = fecha.getDate() + '/' + (fecha.getMonth()+1) + ' - ' + fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()
   
-  let {user, message } = req.body;
+  let {email, message } = req.body;
   let newObj = {
     date : fechaOK,
-    user,
+    email,
     message,
   };
 

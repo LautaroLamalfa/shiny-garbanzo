@@ -1,4 +1,4 @@
-const knex = require('../knexfile');
+const knex = require('../dbM');
 
 class Contenedor {
 
@@ -20,7 +20,7 @@ class Contenedor {
         try{
             let data = await knex.from(this.name).select("*").where({ id: num  });
             data = data[0];
-            data = {id:data.id, date: data.date, message:data.message, user:data.user}
+            data = {id:data.id, date: data.date, message:data.message, email:data.email}
             return data;
         }catch(error){
             throw(error);
@@ -36,7 +36,7 @@ class Contenedor {
                     id: msg['id'],
                     date: msg['date'],
                     message: msg['message'],
-                    user: msg['user']
+                    email: msg['email']
                 }
                 messages.push(aux);
             }

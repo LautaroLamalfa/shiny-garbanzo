@@ -1,5 +1,4 @@
-
-const knex = require('../db');
+const knex = require('../dbP');
 
 class Contenedor {
 
@@ -10,7 +9,7 @@ class Contenedor {
     async save(product) {
         knex(this.name).insert(product)
         .then(() => {
-          console.log("Register ok!");
+          console.log("Producto registrado!");
         })
         .catch((err) => {
           throw err;
