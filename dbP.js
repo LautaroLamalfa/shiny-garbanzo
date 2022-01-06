@@ -25,6 +25,22 @@ const knex = require("knex")({
     throw err;
   });
 
+
+  knex.schema
+  .hasTable("productos").then((exists) => {
+    if (!exists) {
+      knex.createTable("productos", (table) => {
+        table.increments("id").primary();
+        table.string("nombre");
+        table.float("precio");
+        table.string("imagen");
+    }
+  )}
+}).then(() => {
+    console.log("Tabla de Productos creada");
+  }).catch(() => {
+    console.log("Tabla no creada");;
+  }).finally(()=> knex.destroy())
   
 
 module.exports = knex;

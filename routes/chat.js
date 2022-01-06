@@ -5,7 +5,7 @@ const Contenedor = require("../content/chat");
 const { Router } = express;
 const router = new Router();
 
-let chat = new Contenedor("message");
+let chat = new Contenedor("mensajes");
 
 
 //GET TODO EL CHAT

@@ -98,8 +98,8 @@ function renderChat(){
 function enviarChat(){
     const url = '/api/chat';
     let data = {
-        name: document.getElementById('email').value,
-        msg: document.getElementById('message').value
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
     }
 
     const request = {

@@ -12,16 +12,19 @@ const knex = require("knex")({
   });
 
   knex.schema
-  .createTableIfNotExists("mensajes", function (table) {
-    table.increments("id").primary();
-    table.string("email");
-    table.string("message");  
-  })
-  .then(() => {
+  .hasTable("mensajes").then((exists) => {
+    if (!exists) {
+      knex.createTable("mensajes", (table) => {
+        table.increments("id").primary();
+        table.string("email");
+        table.string("message");
+        table.string("date")  
+    }
+  )}
+}).then(() => {
     console.log("Tabla de Mensajes creada");
-  })
-  .catch((err) => {
-    throw err;
-  });
+  }).catch(() => {
+    console.log("Tabla no creada");;
+  }).finally(()=> knex.destroy())
 
 module.exports = knex;
