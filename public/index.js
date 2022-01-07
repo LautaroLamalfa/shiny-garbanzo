@@ -1,4 +1,3 @@
-
 const socket = io();
 
 socket.on("render", (data)=>{
@@ -101,7 +100,6 @@ function enviarChat(){
         email: document.getElementById('email').value,
         message: document.getElementById('message').value
     }
-
     const request = {
         method: 'POST',
         body: JSON.stringify(data),

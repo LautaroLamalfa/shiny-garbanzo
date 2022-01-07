@@ -1,4 +1,3 @@
-
 const express = require("express");
 const Contenedor = require("../content/chat");
 
@@ -27,8 +26,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const fecha = new Date();
   let fechaOK = fecha.getDate() + '/' + (fecha.getMonth()+1) + ' - ' + fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()
-  
-  let {email, message } = req.body;
+
+  let {email,message} = req.body;
   let newObj = {
     date : fechaOK,
     email,
