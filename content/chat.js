@@ -12,13 +12,15 @@ class Contenedor {
           console.log("Register ok!");
         })
         .catch((err) => {
-          throw err;
+          console.log("Error publicando un mensaje");
+          console.log(err)
         });
     }
 
     async getById(num) {
         try{
             let data = await knex.from(this.name).select("*").where({ id: num  });
+          console.log("HOLA")
             data = data[0];
             data = {id:data.id, date: data.date, message:data.message, email:data.email}
             return data;
